@@ -1,0 +1,2 @@
+  [1m[35m (213.7ms)[0m  [1m[35mCREATE DATABASE "flatnote_development" ENCODING = 'unicode'[0m
+  [1m[35m (84.1ms)[0m  [1m[35mCREATE DATABASE "flatnote_test" ENCODING = 'unicode'[0m
