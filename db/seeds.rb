@@ -7,3 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+User.create(name: "User #1", username: "user1" )
+User.create(name: "User #2", username: "user2" )
+
+Note.create(title: "Ruby", body:"Ruby notes", user_id: 1)
+Note.create(title: "Rails", body:"Rails notes", user_id: 1)
+Note.create(title: "Javascript", body:"Javascript notes", user_id: 2)
+Note.create(title: "React", body:"React notes", user_id: 2)
+
+
+tag_array = ["ruby", "rails", "javascript", "react"]
+
+tag_array.each do |tag|
+    Tag.create(name: tag)
+end
