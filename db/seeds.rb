@@ -5,16 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'database_cleaner'
+require 'betterlorem'
+
+DatabaseCleaner.clean_with(:truncation)
 
 
 User.create(name: "User #1", username: "user1" )
 User.create(name: "User #2", username: "user2" )
 
-Note.create(title: "Ruby", body:"Ruby notes", user_id: 1)
-Note.create(title: "Rails", body:"Rails notes", user_id: 1)
-Note.create(title: "Javascript", body:"Javascript notes", user_id: 2)
-Note.create(title: "React", body:"React notes", user_id: 2)
+10.times do
+Note.create(
+    title: BetterLorem.w(3, true), 
+    body: BetterLorem.p(1,true), 
+    user_id: 1)
+end
 
+10.times do
+    Note.create(
+        title: BetterLorem.w(3, true), 
+        body: BetterLorem.p(1,true), 
+        user_id: 2)
+    end
 
 tag_array = ["ruby", "rails", "javascript", "react"]
 

@@ -56,12 +56,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    betterlorem (0.1.2)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    database_cleaner (1.7.0)
     erubi (1.9.0)
     ffi (1.11.3)
     globalid (0.4.2)
@@ -151,8 +153,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  betterlorem (~> 0.1.2)
   bootsnap (>= 1.4.2)
   byebug
+  database_cleaner (~> 1.7)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
