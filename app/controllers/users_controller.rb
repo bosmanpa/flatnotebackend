@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_or_create_by(params[:username])
+        user = User.find_or_create_by(username: params[:id])
         render json: user, include: :notes
     end
 
