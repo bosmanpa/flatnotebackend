@@ -4603,3 +4603,237 @@ Processing by NotesController#update as */*
 Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 2832)
 
 
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "notes" DISABLE TRIGGER ALL;ALTER TABLE "tags" DISABLE TRIGGER ALL;ALTER TABLE "post_tags" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (9.3ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (4.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'flatnote_development'[0m
+  [1m[35m (15.7ms)[0m  [1m[35mTRUNCATE TABLE "public"."notes", "public"."tags", "public"."post_tags", "public"."users" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "notes" ENABLE TRIGGER ALL;ALTER TABLE "tags" ENABLE TRIGGER ALL;ALTER TABLE "post_tags" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "user1"], ["created_at", "2020-01-03 05:25:18.001005"], ["updated_at", "2020-01-03 05:25:18.001005"], ["name", "User #1"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "user2"], ["created_at", "2020-01-03 05:25:18.004753"], ["updated_at", "2020-01-03 05:25:18.004753"], ["name", "User #2"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.7ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Et facta est."], ["body", "Te autem faciente eleemosynam, nesciat sinistra tua quid faciat dextera tua ut sit eleemosyna tua in abscondito, et Pater tuus, qui videt in abscondito, reddet tibi. Et cum oratis, non eritis sicut hypocritæ qui amant in synagogis et in angulis platearum stantes orare, ut videantur ab hominibus amen dico vobis, receperunt mercedem suam."], ["created_at", "2020-01-03 05:25:18.029199"], ["updated_at", "2020-01-03 05:25:18.029199"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Patrem tuum in."], ["body", "Tunc adimpletum est quod dictum est per Jeremiam prophetam dicentem dicens Surge, et accipe puerum, et matrem ejus, et vade in terram Israël defuncti sunt enim qui quærebant animam pueri."], ["created_at", "2020-01-03 05:25:18.034013"], ["updated_at", "2020-01-03 05:25:18.034013"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Et in omnibus."], ["body", "Tunc reliquit eum diabolus et ecce angeli accesserunt, et ministrabant ei. Cum autem audisset Jesus quod Joannes traditus esset, secessit in Galilæam et, relicta civitate Nazareth, venit, et habitavit in Capharnaum maritima, in finibus Zabulon et Nephthalim ut adimpleretur quod dictum est per Isaiam prophetam Terra Zabulon, et terra Nephthalim, via maris trans Jordanem, alilæa gentium populus, qui sedebat in tenebris, vidit lucem magnam et sedentibus in regione umbræ mortis, lux orta est eis."], ["created_at", "2020-01-03 05:25:18.038051"], ["updated_at", "2020-01-03 05:25:18.038051"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Salva nos perimus."], ["body", "Et ne velitis dicere intra vos Patrem habemus Abraham. Dico enim vobis quoniam potens est Deus de lapidibus istis suscitare filios Abrahæ. Jam enim securis ad radicem arborum posita est. Omnis ergo arbor, quæ non facit fructum bonum, excidetur, et in ignem mittetur."], ["created_at", "2020-01-03 05:25:18.042018"], ["updated_at", "2020-01-03 05:25:18.042018"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Judæa, et de."], ["body", "Joannes autem prohibebat eum, dicens Ego a te debeo baptizari, et tu venis ad me? Respondens autem Jesus, dixit ei Sine modo sic enim decet nos implere omnem justitiam. Tunc dimisit eum. Baptizatus autem Jesus, confestim ascendit de aqua, et ecce aperti sunt ei cæli et vidit Spiritum Dei descendentem sicut columbam, et venientem super se."], ["created_at", "2020-01-03 05:25:18.046440"], ["updated_at", "2020-01-03 05:25:18.046440"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (2.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Ostende te sacerdoti."], ["body", "Et responso accepto in somnis ne redirent ad Herodem, per aliam viam reversi sunt in regionem suam.  Qui cum recessissent, ecce angelus Domini apparuit in somnis Joseph, dicens Surge, et accipe puerum, et matrem ejus, et fuge in Ægyptum, et esto ibi usque dum dicam tibi. Futurum est enim ut Herodes quærat puerum ad perdendum eum."], ["created_at", "2020-01-03 05:25:18.052606"], ["updated_at", "2020-01-03 05:25:18.052606"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Invenietis pulsate, and."], ["body", "Dictum est autem Quicumque dimiserit uxorem suam, det ei libellum repudii. Ego autem dico vobis quia omnis qui dimiserit uxorem suam, excepta fornicationis causa, facit eam mœchari et qui dimissam duxerit, adulterat. Iterum audistis quia dictum est antiquis Non perjurabis reddes autem Domino juramenta tua."], ["created_at", "2020-01-03 05:25:18.059284"], ["updated_at", "2020-01-03 05:25:18.059284"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "In deserto Parate."], ["body", "Tunc exibat ad eum Jerosolyma, et omnis Judæa, et omnis regio circa Jordanem; et baptizabantur ab eo in Jordane, confitentes peccata sua. Videns autem multos pharisæorum, et sadducæorum, venientes ad baptismum suum, dixit eis Progenies viperarum, quis demonstravit vobis fugere a ventura ira?  Facite ergo fructum dignum pœnitentiæ."], ["created_at", "2020-01-03 05:25:18.075973"], ["updated_at", "2020-01-03 05:25:18.075973"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Ergo arbor, quæ."], ["body", "Cum autem descendisset de monte, secutæ sunt eum turbæ multæ et ecce leprosus veniens, adorabat eum, dicens Domine, si vis, potes me mundare. Et extendens Jesus manum, tetigit eum, dicens Volo mundare. Et confestim mundata est lepra ejus. Et ait illi Jesus Vide, nemini dixeris sed vade, ostende te sacerdoti, et offer munus, quod præcepit Moyses, in testimonium illis."], ["created_at", "2020-01-03 05:25:18.080794"], ["updated_at", "2020-01-03 05:25:18.080794"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Me est, cujus."], ["body", "Ego autem dico vobis, non resistere malo sed si quis te percusserit in dexteram maxillam tuam, præbe illi et alteram et ei, qui vult tecum judicio contendere, et tunicam tuam tollere, dimitte ei et pallium  et quicumque te angariaverit mille passus, vade cum illo et alia duo."], ["created_at", "2020-01-03 05:25:18.085998"], ["updated_at", "2020-01-03 05:25:18.085998"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "In testimonium illis."], ["body", "Estote ergo vos perfecti, sicut et Pater vester cælestis perfectus est."], ["created_at", "2020-01-03 05:25:18.090254"], ["updated_at", "2020-01-03 05:25:18.090254"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Hic est enim."], ["body", "Tunc exibat ad eum Jerosolyma, et omnis Judæa, et omnis regio circa Jordanem; et baptizabantur ab eo in Jordane, confitentes peccata sua. Videns autem multos pharisæorum, et sadducæorum, venientes ad baptismum suum, dixit eis Progenies viperarum, quis demonstravit vobis fugere a ventura ira?  Facite ergo fructum dignum pœnitentiæ."], ["created_at", "2020-01-03 05:25:18.094749"], ["updated_at", "2020-01-03 05:25:18.094749"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Sepelire patrem meum."], ["body", "Qui petit a te, da ei et volenti mutuari a te, ne avertaris.  Audistis quia dictum est Diliges proximum tuum, et odio habebis inimicum tuum."], ["created_at", "2020-01-03 05:25:18.099352"], ["updated_at", "2020-01-03 05:25:18.099352"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Et dicens Pœnitentiam."], ["body", "Nam et ego homo sum sub potestate constitutus, habens sub me milites, et dico huic Vade, et vadit et alii Veni, et venit et servo meo Fac hoc, et facit. Audiens autem Jesus miratus est, et sequentibus se dixit Amen dico vobis, non inveni tantam fidem in Israël. Dico autem vobis, quod multi ab oriente et occidente venient, et recumbent cum Abraham, et Isaac, et Jacob in regno cælorum filii autem regni ejicientur in tenebras exteriores ibi erit fletus et stridor dentium."], ["created_at", "2020-01-03 05:25:18.104083"], ["updated_at", "2020-01-03 05:25:18.104083"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Valde, et mittens."], ["body", "Et si salutaveritis fratres vestros tantum, quid amplius facitis? nonne et ethnici hoc faciunt?"], ["created_at", "2020-01-03 05:25:18.115568"], ["updated_at", "2020-01-03 05:25:18.115568"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Eis ubi Christus."], ["body", "Tunc exibat ad eum Jerosolyma, et omnis Judæa, et omnis regio circa Jordanem; et baptizabantur ab eo in Jordane, confitentes peccata sua. Videns autem multos pharisæorum, et sadducæorum, venientes ad baptismum suum, dixit eis Progenies viperarum, quis demonstravit vobis fugere a ventura ira?  Facite ergo fructum dignum pœnitentiæ."], ["created_at", "2020-01-03 05:25:18.121731"], ["updated_at", "2020-01-03 05:25:18.121731"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Me venturus est."], ["body", "Dico enim vobis, quia nisi abundaverit justitia vestra plus quam scribarum et pharisæorum, non intrabitis in regnum cælorum. Audistis quia dictum est antiquis Non occides qui autem occiderit, reus erit judicio."], ["created_at", "2020-01-03 05:25:18.125661"], ["updated_at", "2020-01-03 05:25:18.125661"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Omnia gentes inquirunt."], ["body", "Et si salutaveritis fratres vestros tantum, quid amplius facitis? nonne et ethnici hoc faciunt?"], ["created_at", "2020-01-03 05:25:18.129443"], ["updated_at", "2020-01-03 05:25:18.129443"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Civitate Nazareth, venit."], ["body", "Qui consurgens accepit puerum et matrem ejus nocte, et secessit in Ægyptum et erat ibi usque ad obitum Herodis ut adimpleretur quod dictum est a Domino per prophetam dicentem Ex Ægypto vocavi filium meum."], ["created_at", "2020-01-03 05:25:18.133619"], ["updated_at", "2020-01-03 05:25:18.133619"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Tuorum, quam totum."], ["body", "Et accesserunt ad eum discipuli ejus, et suscitaverunt eum, dicentes Domine, salva nos perimus. Et dicit eis Jesus Quid timidi estis, modicæ fidei? Tunc surgens imperavit ventis, et mari, et facta est tranquillitas magna. Porro homines mirati sunt, dicentes Qualis est hic, quia venti et mare obediunt ei? Et cum venisset trans fretum in regionem Gerasenorum, occurrerunt ei duo habentes dæmonia, de monumentis exeuntes, sævi nimis, ita ut nemo posset transire per viam illam."], ["created_at", "2020-01-03 05:25:18.138419"], ["updated_at", "2020-01-03 05:25:18.138419"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "ruby"], ["created_at", "2020-01-03 05:25:18.148664"], ["updated_at", "2020-01-03 05:25:18.148664"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "rails"], ["created_at", "2020-01-03 05:25:18.152194"], ["updated_at", "2020-01-03 05:25:18.152194"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "javascript"], ["created_at", "2020-01-03 05:25:18.154804"], ["updated_at", "2020-01-03 05:25:18.154804"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "react"], ["created_at", "2020-01-03 05:25:18.163094"], ["updated_at", "2020-01-03 05:25:18.163094"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/user1" for ::1 at 2020-01-02 23:25:27 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"user1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 1.2ms | Allocations: 2986)
+
+
+Started PATCH "/notes/1" for ::1 at 2020-01-02 23:25:36 -0600
+Processing by NotesController#update as */*
+  Parameters: {"title"=>"Et facta est.", "body"=>"sdfsdfsdfsdfsdf", "id"=>"1", "note"=>{"title"=>"Et facta est.", "body"=>"sdfsdfsdfsdfsdf"}}
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:25:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:26:in `update'
+  [1m[36mNote Update (0.3ms)[0m  [1m[33mUPDATE "notes" SET "body" = $1, "updated_at" = $2 WHERE "notes"."id" = $3[0m  [["body", "sdfsdfsdfsdfsdf"], ["updated_at", "2020-01-03 05:25:36.643898"], ["id", 1]]
+  ↳ app/controllers/notes_controller.rb:26:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:26:in `update'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 2830)
+
+
+Started DELETE "/notes/1" for ::1 at 2020-01-02 23:25:39 -0600
+Processing by NotesController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:19:in `destroy'
+  [1m[36mNote Destroy (1.0ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/notes_controller.rb:20:in `destroy'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 1129)
+
+
+Started POST "/notes" for ::1 at 2020-01-02 23:25:54 -0600
+Processing by NotesController#create as JSON
+  Parameters: {"title"=>"new Note", "body"=>"New Body", "user_id"=>1, "note"=>{"user_id"=>1, "title"=>"new Note", "body"=>"New Body"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:14:in `create'
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "new Note"], ["body", "New Body"], ["created_at", "2020-01-03 05:25:54.971432"], ["updated_at", "2020-01-03 05:25:54.971432"]]
+  ↳ app/controllers/notes_controller.rb:14:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:14:in `create'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 2314)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "notes" DISABLE TRIGGER ALL;ALTER TABLE "tags" DISABLE TRIGGER ALL;ALTER TABLE "post_tags" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'flatnote_development'[0m
+  [1m[35m (10.7ms)[0m  [1m[35mTRUNCATE TABLE "public"."notes", "public"."tags", "public"."post_tags", "public"."users" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "notes" ENABLE TRIGGER ALL;ALTER TABLE "tags" ENABLE TRIGGER ALL;ALTER TABLE "post_tags" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "user1"], ["created_at", "2020-01-03 05:26:24.222541"], ["updated_at", "2020-01-03 05:26:24.222541"], ["name", "User #1"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "user2"], ["created_at", "2020-01-03 05:26:24.226269"], ["updated_at", "2020-01-03 05:26:24.226269"], ["name", "User #2"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "A Spiritu, ut."], ["body", "Dico enim vobis, quia nisi abundaverit justitia vestra plus quam scribarum et pharisæorum, non intrabitis in regnum cælorum. Audistis quia dictum est antiquis Non occides qui autem occiderit, reus erit judicio."], ["created_at", "2020-01-03 05:26:24.237833"], ["updated_at", "2020-01-03 05:26:24.237833"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Homines mirati sunt."], ["body", "Ait illi Jesus Rursum scriptum est Non tentabis Dominum Deum tuum."], ["created_at", "2020-01-03 05:26:24.242922"], ["updated_at", "2020-01-03 05:26:24.242922"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Cœpit Jesus prædicare."], ["body", "Et abiit opinio ejus in totam Syriam, et obtulerunt ei omnes male habentes, variis languoribus, et tormentis comprehensos, et qui dæmonia habebant, et lunaticos, et paralyticos, et curavit eos et secutæ sunt eum turbæ multæ de Galilæa, et Decapoli, et de Jerosolymis, et de Judæa, et de trans Jordanem."], ["created_at", "2020-01-03 05:26:24.247018"], ["updated_at", "2020-01-03 05:26:24.247018"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Diebus Herodis regis."], ["body", "Et congregans omnes principes sacerdotum, et scribas populi, sciscitabatur ab eis ubi Christus nasceretur. At illi dixerunt In Bethlehem Judæ sic enim scriptum est per prophetam Tunc Herodes clam vocatis magis diligenter didicit ab eis tempus stellæ, quæ apparuit eis et mittens illos in Bethlehem, dixit Ite, et interrogate diligenter de puero et cum inveneritis, renuntiate mihi, ut et ego veniens adorem eum."], ["created_at", "2020-01-03 05:26:24.251136"], ["updated_at", "2020-01-03 05:26:24.251136"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Simonem, qui vocatur."], ["body", "Ubi enim est thesaurus tuus, ibi est et cor tuum. Lucerna corporis tui est oculus tuus. Si oculus tuus fuerit simplex, totum corpus tuum lucidum erit. Si autem oculus tuus fuerit nequam, totum corpus tuum tenebrosum erit. Si ergo lumen, quod in te est, tenebræ sunt ipsæ tenebræ quantæ erunt?"], ["created_at", "2020-01-03 05:26:24.255161"], ["updated_at", "2020-01-03 05:26:24.255161"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Et ejiciebat spiritus."], ["body", "Et si dextra manus tua scandalizat te, abscide eam, et projice abs te expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum eat in gehennam."], ["created_at", "2020-01-03 05:26:24.270124"], ["updated_at", "2020-01-03 05:26:24.270124"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Excepta fornicationis causa."], ["body", "Et ne velitis dicere intra vos Patrem habemus Abraham. Dico enim vobis quoniam potens est Deus de lapidibus istis suscitare filios Abrahæ. Jam enim securis ad radicem arborum posita est. Omnis ergo arbor, quæ non facit fructum bonum, excidetur, et in ignem mittetur."], ["created_at", "2020-01-03 05:26:24.273905"], ["updated_at", "2020-01-03 05:26:24.273905"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Salietur? ad nihilum."], ["body", "Nam et ego homo sum sub potestate constitutus, habens sub me milites, et dico huic Vade, et vadit et alii Veni, et venit et servo meo Fac hoc, et facit. Audiens autem Jesus miratus est, et sequentibus se dixit Amen dico vobis, non inveni tantam fidem in Israël. Dico autem vobis, quod multi ab oriente et occidente venient, et recumbent cum Abraham, et Isaac, et Jacob in regno cælorum filii autem regni ejicientur in tenebras exteriores ibi erit fletus et stridor dentium."], ["created_at", "2020-01-03 05:26:24.278214"], ["updated_at", "2020-01-03 05:26:24.278214"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Enim Dominum Deum."], ["body", "Et si dextra manus tua scandalizat te, abscide eam, et projice abs te expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum eat in gehennam."], ["created_at", "2020-01-03 05:26:24.283043"], ["updated_at", "2020-01-03 05:26:24.283043"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Et Pater vester."], ["body", "Omnis enim that small accipit and quærit, Invenit pulsanti and aperietur. Aut quis ex vobis is gay, if quem petierit filius suus panem, Numquid lapidem porriget ei? Aut if piscem petierit, Numquid serpentem porriget ei? If your ergo, cum SITIS Mali, nostis bona data filiis dare vestris quanto magis vester Pater, who is in Cælis, dabit bona petentibus is?"], ["created_at", "2020-01-03 05:26:24.287163"], ["updated_at", "2020-01-03 05:26:24.287163"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Vestimentis ovium, intrinsecus."], ["body", "Esto consentiens adversario tuo cito dum es in via cum eo ne forte tradat te adversarius judici, et judex tradat te ministro et in carcerem mittaris."], ["created_at", "2020-01-03 05:26:24.290995"], ["updated_at", "2020-01-03 05:26:24.290995"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Vobis quia omnis."], ["body", "Nemo potest duobus dominis servire aut enim unum odio habebit, et alterum diliget aut unum sustinebit, et alterum contemnet. Non potestis Deo servire et mammonæ. Ideo dico vobis, ne solliciti sitis animæ vestræ quid manducetis, neque corpori vestro quid induamini. Nonne anima plus est quam esca, et corpus plus quam vestimentum? Respicite volatilia cæli, quoniam non serunt, neque metunt, neque congregant in horrea et Pater vester cælestis pascit illa. Nonne vos magis pluris estis illis?"], ["created_at", "2020-01-03 05:26:24.295156"], ["updated_at", "2020-01-03 05:26:24.295156"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Quoniam ipsi saturabuntur."], ["body", "Nolite judicare, ut not judicemini. In enim judicio judicaveritis quo, judicabimini and in four mensura Mensi fueritis, remetietur vobis. Quid autem empty festucam in oculo fratris tui and trabem in oculo tuo non-empty?"], ["created_at", "2020-01-03 05:26:24.299127"], ["updated_at", "2020-01-03 05:26:24.299127"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Enim Pater vester."], ["body", "Et ait illis Venite post me, et faciam vos fieri piscatores hominum. At illi continuo relictis retibus secuti sunt eum."], ["created_at", "2020-01-03 05:26:24.302955"], ["updated_at", "2020-01-03 05:26:24.302955"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Infirmitatem in populo."], ["body", "Tunc adimpletum est quod dictum est per Jeremiam prophetam dicentem dicens Surge, et accipe puerum, et matrem ejus, et vade in terram Israël defuncti sunt enim qui quærebant animam pueri."], ["created_at", "2020-01-03 05:26:24.314579"], ["updated_at", "2020-01-03 05:26:24.314579"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Prædicare, et dicere."], ["body", "Non omnis who dicit mihi, Domine, Domine, intrabit in regnum Caelorum sed that facit voluntatem Patris mei, who is in Cælis, ipse intrabit in regnum Caelorum. Multi dicent illa die in mihi Domine, Domine, in nomine tuo prophetavimus nun, and in nomine tuo Daemonia ejecimus and in nomine tuo virtutes multas fecimus? And tunc Confitebor illis numquam novi your Quia discedite was me who operamini iniquitatem."], ["created_at", "2020-01-03 05:26:24.318976"], ["updated_at", "2020-01-03 05:26:24.318976"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Fratris tui. Nolite."], ["body", "Et responso accepto in somnis ne redirent ad Herodem, per aliam viam reversi sunt in regionem suam.  Qui cum recessissent, ecce angelus Domini apparuit in somnis Joseph, dicens Surge, et accipe puerum, et matrem ejus, et fuge in Ægyptum, et esto ibi usque dum dicam tibi. Futurum est enim ut Herodes quærat puerum ad perdendum eum."], ["created_at", "2020-01-03 05:26:24.323076"], ["updated_at", "2020-01-03 05:26:24.323076"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Ejus ait illi."], ["body", "Cum autem descendisset de monte, secutæ sunt eum turbæ multæ et ecce leprosus veniens, adorabat eum, dicens Domine, si vis, potes me mundare. Et extendens Jesus manum, tetigit eum, dicens Volo mundare. Et confestim mundata est lepra ejus. Et ait illi Jesus Vide, nemini dixeris sed vade, ostende te sacerdoti, et offer munus, quod præcepit Moyses, in testimonium illis."], ["created_at", "2020-01-03 05:26:24.327085"], ["updated_at", "2020-01-03 05:26:24.327085"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Et de Judæa."], ["body", "Si enim diligitis eos qui vos diligunt, quam mercedem habebitis? nonne et publicani hoc faciunt?"], ["created_at", "2020-01-03 05:26:24.330960"], ["updated_at", "2020-01-03 05:26:24.330960"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("user_id", "title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Tunc surgens imperavit."], ["body", "Non omnis who dicit mihi, Domine, Domine, intrabit in regnum Caelorum sed that facit voluntatem Patris mei, who is in Cælis, ipse intrabit in regnum Caelorum. Multi dicent illa die in mihi Domine, Domine, in nomine tuo prophetavimus nun, and in nomine tuo Daemonia ejecimus and in nomine tuo virtutes multas fecimus? And tunc Confitebor illis numquam novi your Quia discedite was me who operamini iniquitatem."], ["created_at", "2020-01-03 05:26:24.334716"], ["updated_at", "2020-01-03 05:26:24.334716"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "ruby"], ["created_at", "2020-01-03 05:26:24.343712"], ["updated_at", "2020-01-03 05:26:24.343712"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "rails"], ["created_at", "2020-01-03 05:26:24.346697"], ["updated_at", "2020-01-03 05:26:24.346697"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "javascript"], ["created_at", "2020-01-03 05:26:24.349066"], ["updated_at", "2020-01-03 05:26:24.349066"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "react"], ["created_at", "2020-01-03 05:26:24.351467"], ["updated_at", "2020-01-03 05:26:24.351467"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
